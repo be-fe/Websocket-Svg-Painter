@@ -893,8 +893,6 @@ Painter.prototype.appendHandleBar = function () {
         barEndY = e.clientY;
 
         // 准备计算,然后放大缩小了
-        console.log(e);
-        console.log('这里应该需要计算顶点了');
 
         // 首先,根据中心点,和鼠标位置,得到长宽,之所以用中心点,是因为不用分四个点的情况
         // 然后,根据记录的初始属性值,计算得到比例
@@ -970,60 +968,6 @@ Painter.prototype.appendHandleBar = function () {
         barEndX = e.clientX;
         barEndY = e.clientY;
     }, false);
-
-
-    // 注释掉下面四个点的坐标，将时间绑定移到 mask 上，否则鼠标会很容易就出去了
-    // // 这里是对坐标的记录
-    // // mouse down 时候的坐标缓存记录,
-    // var barStartX = 0;
-    // var barStartY = 0;
-    // var barDiffX = 0;
-    // var barDiffY = 0;
-    // var barStartLeft = 0;
-    // var barStartTop = 0;
-
-
-    // // 四个 handle 的鼠标操作处理
-    // var mouseDownHandle = function (e) {
-    //     // 首先,要记录下坐标
-    //     barStartX = e.clientX;
-    //     barStartY = e.clientY;
-
-    //     // 鼠标 down 的时候刷新 left 和 top
-    //     barStartLeft = parseInt(self.handle2.style.left);
-    //     barStartTop = parseInt(self.handle2.style.top);
-
-
-    //     this.addEventListener('mousemove', mouseMoveHandle, false);
-    // }
-
-    // var mouseMoveHandle = function (e) {
-
-    //     // 首先,计算偏移量
-    //     // 然后,移动小方块元素
-    //     barDiffX = e.clientX - barStartX;
-
-    //     // 移动小方块和线条,是要分情况讨论的,要区分是都需要移动顶点位置
-    //     // 右上角不需要,先从右上角入手
-    //     self.handle2.style.left = barStartLeft + barDiffX + 'px';
-    //     self.handle2.style.top = barStartTop + barDiffY + 'px';
-
-    // }
-
-    // var mouseUpHandle = function (e) {
-    //     console.log('mouse up');
-    //     this.removeEventListener('mousemove', mouseMoveHandle, false);
-    // }
-
-    // this.handle1.addEventListener('mousedown', mouseDownHandle, false);
-    // this.handle2.addEventListener('mousedown', mouseDownHandle, false);
-    // this.handle3.addEventListener('mousedown', mouseDownHandle, false);
-    // this.handle4.addEventListener('mousedown', mouseDownHandle, false);
-
-    // this.handle1.addEventListener('mouseup', mouseUpHandle, false);
-    // this.handle2.addEventListener('mouseup', mouseUpHandle, false);
-    // this.handle3.addEventListener('mouseup', mouseUpHandle, false);
-    // this.handle4.addEventListener('mouseup', mouseUpHandle, false);
 
     // 添加一个边框,和四个顶点连接起来
     this.barLine = document.createElement('div');
