@@ -76,6 +76,8 @@
 
     var color = ''; // 这个颜色用来存储画笔的颜色,当调用橡皮擦的时候,其实是用了个和底色相同的颜色而已,那么切换回来后,颜色需要还原
 
+    var painter = new Painter('svg');
+
     socket.on('connect', function () {
         console.log('Client conneced!Clear board!');
         socket.emit('clear');// 这里是一个模拟的过程,实际不会发生 connect 就清除的情况
@@ -93,16 +95,18 @@
         }
     }, false);
 
-    socket.on('draw', function (diff) {
-        painter.drawDiff(diff);
-    });
+
 
     socket.on('clear', function () {
         painter.clear();
     });
 
-    var painter = new Painter('svg');
-    color = painter.color;
+
+
+    // 绘制 diff
+    socket.on('draw', function (diff) {
+        painter.drawDiff(diff);
+    });
 
     // 监听 diff
     painter.onDiff = function (diff) {
@@ -110,6 +114,7 @@
     };
 
 
+    color = painter.color;
     var shapeSelector = document.getElementById('shape-selector');
     shapeSelector.addEventListener('click', function (e) {
         if (e.target.className == 'child') {

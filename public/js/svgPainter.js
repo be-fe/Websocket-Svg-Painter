@@ -1069,5 +1069,3 @@ Painter.prototype.showHandleBar = function (ele) {
 Painter.prototype.hideHandleBar = function () {
     this.mask.style.zIndex = '-1';
 }
-
-
